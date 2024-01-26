@@ -1,12 +1,22 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+  yield takeLatest('FETCH_DETAILS', fetchDetails);
+}
+
+function* fetchDetails(action) {
+  try {
+    const genreResponse = yield axios.get(`/api/genres/${action.payload}`)
+    yield put({type: 'SET_GENRES', payload: genreResponse.data})
+  } catch (error) {
+    console.log('fetchDetails error:', error);
+  }
 }
 
 function* fetchAllMovies() {
