@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/:id', (req, res) => {
-  const queryText = `SELECT name FROM movies_genres
+  const queryText = `SELECT movies_genres.movie_id AS movieid, name FROM movies_genres
   JOIN genres ON genres.id = movies_genres.genre_id
   WHERE movie_id = $1;`;
   const queryParams = [req.params.id];
