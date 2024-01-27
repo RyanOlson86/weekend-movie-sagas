@@ -20,7 +20,7 @@ const handleClick = () => {
 }
 
   return (
-    <div >
+    <div data-testid="movieDetails">
       <h1>DetailsPage</h1>
       <img src={movieDetails?.poster} />
       <h2>{movieDetails?.title}</h2>
@@ -33,7 +33,7 @@ const handleClick = () => {
       
       <div>{movieDetails?.description}</div>
       
-      <button onClick={handleClick}>HOME</button>
+      <button data-testid="toList" onClick={handleClick}>HOME</button>
       
     </div>
   );
