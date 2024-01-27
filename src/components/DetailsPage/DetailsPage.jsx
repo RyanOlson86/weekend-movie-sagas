@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Card, CardContent, Button, CardActions, Typography, Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function DetailsPage() {
   const history = useHistory();
@@ -19,8 +21,7 @@ function DetailsPage() {
 
   return (
     <div data-testid="movieDetails">
-      <h1>DetailsPage</h1>
-      <img src={movieDetails?.poster} />
+      {/* <img src={movieDetails?.poster} />
       <h2>{movieDetails?.title}</h2>
       <div>
         Genres:
@@ -34,7 +35,57 @@ function DetailsPage() {
 
       <button data-testid="toList" onClick={handleClick}>
         HOME
-      </button>
+      </button> */}
+      <Card>
+        <CardContent
+          sx={{
+            width: "500px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h4" gutterBottom textAlign="center">
+            {movieDetails?.title}
+          </Typography>
+
+          <img src={movieDetails?.poster} />
+
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+              Genres
+            </AccordionSummary>
+            <AccordionDetails>
+              {genres.map((genre, i) => (
+                <li key={i}>{genre.name}</li>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+              Description
+            </AccordionSummary>
+            <AccordionDetails>{movieDetails?.description}</AccordionDetails>
+          </Accordion>
+
+          {/* <Box component="form">
+            <TextField
+              label={title}
+              variant="outlined"
+              type={inputType}
+              size="large"
+              inputProps={{"data-testid":"input"}}
+              onChange={(event) => setFormInput(event.target.value)}
+            ></TextField>
+          </Box> */}
+          <CardActions>
+            <Button size="large" variant="contained" onClick={handleClick} data-testid="next">
+              NEXT
+            </Button>
+          </CardActions>
+        </CardContent>
+      </Card>
     </div>
   );
 }
