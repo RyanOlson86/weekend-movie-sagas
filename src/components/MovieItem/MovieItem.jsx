@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Card, CardContent, Typography } from "@mui/material";
 
 function MovieItem({ movie }) {
   const dispatch = useDispatch();
@@ -15,8 +16,22 @@ function MovieItem({ movie }) {
 
   return (
     <div data-testid="movieItem">
-      <h3>{movie.title}</h3>
-      <img id={movie.id} src={movie.poster} alt={movie.title} onClick={handleClick} data-testid="toDetails" />
+      <Card sx={{margin: "10px"}}>
+        <CardContent
+          sx={{
+            width: "240px",
+            height: "300px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6" gutterBottom textAlign="center" sx={{maxHeight: "32px", fontSize: "16px"}}>
+            {movie.title}
+          </Typography>
+          <img id={movie.id} src={movie.poster} alt={movie.title} onClick={handleClick} data-testid="toDetails" />
+        </CardContent>
+      </Card>
     </div>
   );
 }

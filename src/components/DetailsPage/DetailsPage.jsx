@@ -31,27 +31,12 @@ function DetailsPage() {
   };
 
   const myStyle = {
-    backgroundColor: "white",
+    backgroundColor: "#afd6c4",
     borderRadius: "5px",
   };
 
   return (
     <div data-testid="movieDetails">
-      {/* <img src={movieDetails?.poster} />
-      <h2>{movieDetails?.title}</h2>
-      <div>
-        Genres:
-        {genres.map((genre, i) => (
-          <div key={i}>{genre.name}</div>
-        ))}
-      </div>
-      <br></br>
-
-      <div>{movieDetails?.description}</div>
-
-      <button data-testid="toList" onClick={handleClick}>
-        HOME
-      </button> */}
       <Card inputProps={{ "data-testid": "movieDetails" }} variant="outlined" sx={{margin: "30px"}}>
         <CardContent
           sx={{
