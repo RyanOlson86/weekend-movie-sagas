@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -9,10 +8,11 @@
 
 .header {
   background-color: #1b8b57;
-    color: whitesmoke;
-    margin: 0px;
-    padding: 10px;
-    font-family: fantasy;
-    margin-bottom: 30px;
-    width: -webkit-fill-available;
+  color: whitesmoke;
+  margin: 0px;
+  padding: 10px;
+  font-family: fantasy;
+  margin-bottom: 30px;
+  width: -webkit-fill-available;
+  text-align: center;
 }
