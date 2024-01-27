@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Card, CardContent, Button, CardActions, Typography, Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Margin } from "@mui/icons-material";
 
 function DetailsPage() {
   const history = useHistory();
@@ -17,6 +18,11 @@ function DetailsPage() {
   // On click, change page to home page
   const handleClick = () => {
     history.push("/");
+  };
+
+  const myStyle = {
+    backgroundColor: "white",
+    borderRadius: "5px",
   };
 
   return (
@@ -36,7 +42,7 @@ function DetailsPage() {
       <button data-testid="toList" onClick={handleClick}>
         HOME
       </button> */}
-      <Card>
+      <Card inputProps={{"data-testid":"movieDetails"}} >
         <CardContent
           sx={{
             width: "500px",
@@ -51,8 +57,8 @@ function DetailsPage() {
 
           <img src={movieDetails?.poster} />
 
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+          <Accordion sx={{margin: "10px"}}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header" sx={myStyle}>
               Genres
             </AccordionSummary>
             <AccordionDetails>
@@ -63,7 +69,7 @@ function DetailsPage() {
           </Accordion>
 
           <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header" sx={myStyle}>
               Description
             </AccordionSummary>
             <AccordionDetails>{movieDetails?.description}</AccordionDetails>
@@ -80,8 +86,8 @@ function DetailsPage() {
             ></TextField>
           </Box> */}
           <CardActions>
-            <Button size="large" variant="contained" onClick={handleClick} data-testid="next">
-              NEXT
+            <Button size="large" variant="contained" onClick={handleClick} data-testid="toList" sx={{margin: "10px"}}>
+              HOME
             </Button>
           </CardActions>
         </CardContent>
