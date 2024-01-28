@@ -101,10 +101,6 @@ const AddMovie = () => {
       <Typography variant="h4" onClick={quickAddFunc}>Add a movie to the database: </Typography>
       <Box className="inputs">
         <TextField id="movie-title" label="Movie Title" variant="outlined" value={titleInput} onChange={handleTitle} />
-        <TextField id="url-path" label="Image URL" variant="outlined" value={imgInput} onChange={handleImg} />
-      </Box>
-
-      <Box sx={{ width: "90%" }}>
         <FormControl fullWidth>
           <InputLabel>Genre</InputLabel>
           <Select value={genreId} label="Genre" onChange={handleGenre}>
@@ -115,6 +111,10 @@ const AddMovie = () => {
             ))}
           </Select>
         </FormControl>
+      </Box>
+
+      <Box sx={{ width: "90%" }}>
+        <TextField id="url-path" label="Image URL" variant="outlined" value={imgInput} onChange={handleImg} fullWidth />
       </Box>
 
       <Box sx={{ width: "90%" }}>
