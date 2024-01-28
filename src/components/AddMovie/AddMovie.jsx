@@ -1,65 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem, Button } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AddMovie.css";
 
-const genres = [
-  {
-    id: 1,
-    name: "Adventure",
-  },
-  {
-    id: 2,
-    name: "Animated",
-  },
-  {
-    id: 3,
-    name: "Biographical",
-  },
-  {
-    id: 4,
-    name: "Comedy",
-  },
-  {
-    id: 5,
-    name: "Disaster",
-  },
-  {
-    id: 6,
-    name: "Drama",
-  },
-  {
-    id: 7,
-    name: "Epic",
-  },
-  {
-    id: 8,
-    name: "Fantasy",
-  },
-  {
-    id: 9,
-    name: "Musical",
-  },
-  {
-    id: 10,
-    name: "Romantic",
-  },
-  {
-    id: 11,
-    name: "Science Fiction",
-  },
-  {
-    id: 12,
-    name: "Space-Opera",
-  },
-  {
-    id: 13,
-    name: "Superhero",
-  },
-];
-
 const AddMovie = () => {
+  // Local States for inputs
   const [genreId, setGenreId] = useState("");
   const [imgInput, setImg] = useState("");
   const [titleInput, setTitle] = useState("");
@@ -68,6 +14,15 @@ const AddMovie = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect(() => {
+    dispatch({ type: 'FETCH_ALL_GENRES' });
+  }, []);
+
+  //Global genres store
+  const genres = useSelector(store => store.allGenres)
+
+  
+  // Functions for handling change and setting local state
   const handleGenre = (event) => {
     setGenreId(event.target.value);
   };
@@ -84,6 +39,7 @@ const AddMovie = () => {
     setDesc(event.target.value);
   };
 
+  // Function to handle submit and dispatch ADD_MOVIE
   const handleSubmit = () => {
     dispatch({
       type: "ADD_MOVIE",
@@ -96,6 +52,7 @@ const AddMovie = () => {
     });
   };
 
+  // Function to cancel input and send back to home
   const handleCancel = () => {
     history.push("/");
   };
