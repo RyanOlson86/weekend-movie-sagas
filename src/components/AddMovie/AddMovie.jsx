@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const genres = [
   {
@@ -58,15 +59,16 @@ const genres = [
 ];
 
 const AddMovie = () => {
-  const [genreId, setGenreId] = useState('')
+  const [genreId, setGenreId] = useState("");
   const [imgInput, setImg] = useState("");
   const [titleInput, setTitle] = useState("");
   const [descInput, setDesc] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleGenre = (event) => {
-    setGenreId(event.target.value)
+    setGenreId(event.target.value);
   };
 
   const handleImg = (event) => {
@@ -82,12 +84,19 @@ const AddMovie = () => {
   };
 
   const handleSubmit = () => {
-    dispatch({type: 'ADD_MOVIE', payload: {
+    dispatch({
+      type: "ADD_MOVIE",
+      payload: {
         title: titleInput,
         poster: imgInput,
         description: descInput,
-        genre_id: genreId
-    }})
+        genre_id: genreId,
+      },
+    });
+  };
+
+  const handleCancel = () => {
+    history.push('/')
   }
 
   return (
@@ -100,22 +109,28 @@ const AddMovie = () => {
       noValidate
       autoComplete="off"
     >
-      <Typography variant="h5" >Add a movie to the database: </Typography>
+      <Typography variant="h5">Add a movie to the database: </Typography>
       <TextField id="outlined-basic" label="Movie Title" variant="outlined" value={titleInput} onChange={handleTitle} />
       <TextField id="outlined-basic" label="Image URL" variant="outlined" value={imgInput} onChange={handleImg} />
 
       <FormControl fullWidth>
-        <InputLabel >Genre</InputLabel>
+        <InputLabel>Genre</InputLabel>
         <Select value={genreId} label="Genre" onChange={handleGenre}>
-          {genres.map(genre => (
-            <MenuItem key={genre.id} value={genre.id} >{genre.name}</MenuItem>
+          {genres.map((genre) => (
+            <MenuItem key={genre.id} value={genre.id}>
+              {genre.name}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
 
       <TextField id="outlined-basic" label="Description" variant="outlined" value={descInput} onChange={handleDescription} />
-      <Button variant="contained" color="secondary">CANCEL</Button>
-        <Button variant="contained" onClick={handleSubmit}>SUBMIT</Button>
+      <Button variant="contained" color="secondary" onClick={handleCancel}>
+        CANCEL
+      </Button>
+      <Button variant="contained" onClick={handleSubmit}>
+        SUBMIT
+      </Button>
     </Box>
   );
 };
