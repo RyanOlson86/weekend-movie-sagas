@@ -29,7 +29,7 @@ function MovieItem({ movie }) {
           <Typography variant="h6" gutterBottom textAlign="center" sx={{maxHeight: "32px", fontSize: "16px"}}>
             {movie.title}
           </Typography>
-          <img id={movie.id} src={movie.poster} alt={movie.title} onClick={handleClick} data-testid="toDetails" />
+          <img id={movie.id} src={movie.poster} alt={movie.title} onClick={handleClick} data-testid="toDetails" style={{maxWidth: "185px"}}/>
         </CardContent>
       </Card>
     </div>

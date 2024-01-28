@@ -8,6 +8,7 @@ import axios from 'axios';
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
   yield takeLatest('FETCH_DETAILS', fetchDetails);
+  yield takeLatest('ADD_MOVIE', addMovie);
 }
 
 function* fetchDetails(action) {
@@ -30,6 +31,15 @@ function* fetchAllMovies() {
     });
   } catch (error) {
     console.log('fetchAllMovies error:', error);
+  }
+}
+
+function* addMovie(action) {
+  try {
+    yield axios.post('api/movies', action.payload)
+    yield put({type: 'FETCH_MOVIES'})
+  } catch (error) {
+    console.log('addMovie error:', error);
   }
 }
 
