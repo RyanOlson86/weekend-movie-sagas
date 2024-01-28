@@ -11,7 +11,7 @@ function MovieItem({ movie }) {
   // After dispatch, load details page with useHistory
   const handleClick = (event) => {
     dispatch({ type: "FETCH_DETAILS", payload: event.target.id });
-    history.push("/details");
+    history.push(`/details/${event.target.id}`);
   };
 
   return (
