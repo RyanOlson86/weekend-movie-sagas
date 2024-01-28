@@ -8,7 +8,7 @@
 }
 
 .header {
-  background-color: #1b8b57;
+  background-color: #1b8b57e8;
   color: whitesmoke;
   margin: 0px;
   padding: 10px;
@@ -32,6 +32,8 @@
 .header > div {
   display: flex;
   flex-direction: row;
-  width: 150px;
+  width: 200px;
   justify-content: space-between;
 }
+
+
