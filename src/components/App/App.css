@@ -3,12 +3,14 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  background-color: #225332;
-  height: 100%;
+  /* background-color: #225332; */
+  background-image: url("/public/images/film-header.jpeg");
+  background-size: contain;
+  /* height: 100%; */
 }
 
 .header {
-  /* background-color: #1b8b57; */
+  background-color: #1b8b57;
   color: whitesmoke;
   margin: 0px;
   padding: 10px;
@@ -17,14 +19,15 @@
   width: -webkit-fill-available;
   display: flex;
   justify-content: center;
-  background-image: url("/public/images/film-header.jpeg");
-  background-size: 13rem;
+  /* background-image: url("/public/images/film-header.jpeg");
+  background-size: 13rem; */
 }
 
 .header > h1 {
-  background-color: rgb(34 83 50 / 79%);
+  /* background-color: rgb(34 83 50 / 79%); */
   text-decoration: underline;
   width: fit-content;
   margin: 0px;
   font-size: 40px;
+  text-shadow: 2px 2px black;
 }

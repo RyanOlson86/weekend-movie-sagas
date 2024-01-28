@@ -3,6 +3,7 @@ import MovieList from '../MovieList/MovieList';
 import './App.css';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import Header from '../Header/Header';
+import AddMovie from '../AddMovie/AddMovie';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
           <DetailsPage />
         </Route>
 
-        {/* Add Movie page */}
+        <Route path="/add-movie" exact>
+          <AddMovie />
+        </Route>
         
       </Router>
     </div>

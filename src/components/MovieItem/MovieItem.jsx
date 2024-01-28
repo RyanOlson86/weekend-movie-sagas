@@ -16,7 +16,7 @@ function MovieItem({ movie }) {
 
   return (
     <div data-testid="movieItem">
-      <Card sx={{margin: "10px"}}>
+      <Card sx={{margin: "10px", border: "5px solid black"}} >
         <CardContent
           sx={{
             width: "240px",

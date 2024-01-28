@@ -37,7 +37,11 @@ function DetailsPage() {
 
   return (
     <div data-testid="movieDetails">
-      <Card inputProps={{ "data-testid": "movieDetails" }} variant="outlined" sx={{margin: "30px"}}>
+      <Card
+        inputProps={{ "data-testid": "movieDetails" }}
+        variant="outlined"
+        sx={{ margin: "30px", marginBottom: "120px", border: "5px solid black" }}
+      >
         <CardContent
           sx={{
             width: "auto",
@@ -45,21 +49,21 @@ function DetailsPage() {
             flexDirection: "row",
             alignItems: "flex-start",
             paddingTop: "10px",
-            paddingBottom: "10px"
+            paddingBottom: "10px",
           }}
         >
-          <Box sx={{width: "400px", textAlign: "center"}}>
-            <Typography variant="h4" gutterBottom  sx={{width: "400px"}}>
+          <Box sx={{ width: "400px", textAlign: "center" }}>
+            <Typography variant="h4" gutterBottom sx={{ width: "400px" }}>
               {movieDetails?.title}
             </Typography>
 
-            <img src={movieDetails?.poster} style={{ width: "350px"}} />
+            <img src={movieDetails?.poster} style={{ width: "320px" }} />
           </Box>
 
-          <Divider orientation="vertical" variant="fullWidth" flexItem />
+          <Divider orientation="vertical" variant="fullHeight" flexItem />
 
           <Box>
-            <Accordion sx={{ margin: "10px"}}>
+            <Accordion sx={{ margin: "10px" }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header" sx={myStyle}>
                 Genres
               </AccordionSummary>

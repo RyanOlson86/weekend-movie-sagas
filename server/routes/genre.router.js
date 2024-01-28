@@ -19,4 +19,17 @@ router.get('/:id', (req, res) => {
   })
 });
 
+// router.get('/all', (req, res) => {
+//   // GET array of objects with genre and genreId
+//   const queryText = `SELECT * FROM genres;`;
+
+//   pool.query(queryText)
+//   .then((results)=>{
+//     res.send(results.rows)
+//   })
+//   .catch(error => {
+//     console.log('Error in /api/genres/ GET', error)
+//   })
+// });
+
 module.exports = router;
