@@ -4,6 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AddMovie.css";
 
+const quickAdd = {
+  title: "Cars",
+  poster: "https://upload.wikimedia.org/wikipedia/en/3/34/Cars_2006.jpg",
+  description:
+    "Cars is set in a world populated entirely by anthropomorphic vehicles. The film follows a selfish and arrogant young racecar named Lightning McQueen who, on the way to the most important race of his life, becomes stranded in a forgotten town along U.S. Route 66 called Radiator Springs, where he learns about friendship and begins to reevaluate his priorities.",
+  genre_id: 2,
+};
+
 const AddMovie = () => {
   // Local States for inputs
   const [genreId, setGenreId] = useState("");
@@ -15,13 +23,12 @@ const AddMovie = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_ALL_GENRES' });
+    dispatch({ type: "FETCH_ALL_GENRES" });
   }, []);
 
   //Global genres store
-  const genres = useSelector(store => store.allGenres)
+  const genres = useSelector((store) => store.allGenres);
 
-  
   // Functions for handling change and setting local state
   const handleGenre = (event) => {
     setGenreId(event.target.value);
@@ -57,6 +64,13 @@ const AddMovie = () => {
     history.push("/");
   };
 
+  const quickAddFunc = () => {
+    setGenreId(quickAdd.genre_id);
+    setDesc(quickAdd.description);
+    setImg(quickAdd.poster);
+    setTitle(quickAdd.title)
+  }
+
   return (
     <Box
       component="form"
@@ -71,7 +85,7 @@ const AddMovie = () => {
       noValidate
       autoComplete="off"
     >
-      <Typography variant="h4">Add a movie to the database: </Typography>
+      <Typography variant="h4" onClick={quickAddFunc}>Add a movie to the database: </Typography>
       <Box className="inputs">
         <TextField id="movie-title" label="Movie Title" variant="outlined" value={titleInput} onChange={handleTitle} />
         <TextField id="url-path" label="Image URL" variant="outlined" value={imgInput} onChange={handleImg} />

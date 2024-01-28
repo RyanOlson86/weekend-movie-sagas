@@ -39,6 +39,11 @@ function DetailsPage() {
     history.push("/");
   };
 
+  const handleDelete = (event) => {
+    dispatch({type: 'DELETE_MOVIE', payload: id});
+    history.push("/");
+  }
+
   const myStyle = {
     backgroundColor: "#afd6c4",
     borderRadius: "5px",
@@ -93,6 +98,9 @@ function DetailsPage() {
             <CardActions>
               <Button size="large" variant="contained" onClick={handleClick} data-testid="toList" sx={{ margin: "10px" }}>
                 HOME
+              </Button>
+              <Button size="large" variant="contained" onClick={handleDelete} color="secondary" sx={{ margin: "10px" }}>
+                DELETE
               </Button>
             </CardActions>
           </Box>
