@@ -10,6 +10,7 @@ function* rootSaga() {
   yield takeLatest('FETCH_DETAILS', fetchDetails);
   yield takeLatest('ADD_MOVIE', addMovie);
   yield takeLatest('FETCH_ALL_GENRES', fetchAllGenres)
+  yield takeLatest('DELETE_MOVIE', deleteMovie)
 }
 
 function* fetchAllGenres(action) {
@@ -50,6 +51,16 @@ function* addMovie(action) {
     yield put({type: 'FETCH_MOVIES'})
   } catch (error) {
     console.log('addMovie error:', error);
+  }
+}
+
+// Used to delete movie from database
+function* deleteMovie(action) {
+  try {
+    yield axios.delete(`api/movies/${action.payload}`)
+    yield put({type: 'FETCH_MOVIES'})
+  } catch (error) {
+    console.log('deleteMovie error:', error);
   }
 }
 

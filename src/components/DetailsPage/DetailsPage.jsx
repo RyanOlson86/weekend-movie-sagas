@@ -14,6 +14,7 @@ import {
   Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Swal from 'sweetalert2'
 
 function DetailsPage() {
   const dispatch = useDispatch()
@@ -38,6 +39,29 @@ function DetailsPage() {
   const handleClick = () => {
     history.push("/");
   };
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: 'DELETE_MOVIE', payload: id}); 
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+        history.push("/");
+      }
+    });
+    
+  }
 
   const myStyle = {
     backgroundColor: "#afd6c4",
@@ -93,6 +117,9 @@ function DetailsPage() {
             <CardActions>
               <Button size="large" variant="contained" onClick={handleClick} data-testid="toList" sx={{ margin: "10px" }}>
                 HOME
+              </Button>
+              <Button size="large" variant="contained" onClick={handleDelete} color="secondary" sx={{ margin: "10px" }}>
+                DELETE
               </Button>
             </CardActions>
           </Box>
