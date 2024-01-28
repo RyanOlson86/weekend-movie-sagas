@@ -14,8 +14,8 @@ const Header = () => {
     <div className="header">
       <h1 onClick={handleClick}>Show Me The Movies</h1>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/add-movie">Add Movie</Link>
+        <Link to="/"> 🏠 Home </Link>
+        <Link to="/add-movie">🎬  Add Movie </Link>
       </div>
     </div>
   );
