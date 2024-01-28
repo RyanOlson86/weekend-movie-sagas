@@ -3,6 +3,7 @@ import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem, 
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AddMovie.css";
+import Swal from 'sweetalert2'
 
 const quickAdd = {
   title: "Cars",
@@ -57,6 +58,18 @@ const AddMovie = () => {
         genre_id: genreId,
       },
     });
+    setGenreId("");
+    setDesc("");
+    setImg("");
+    setTitle("");
+
+    // Sweet alert pop-up for success
+    Swal.fire({
+      title: "Success!",
+      text: "Movie added to collection!",
+      icon: "success"
+    });
+    history.push('/')
   };
 
   // Function to cancel input and send back to home

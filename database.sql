@@ -17,7 +17,7 @@ CREATE TABLE "genres" (
 -- This is many-to-many!
 CREATE TABLE "movies_genres" (
   "id" SERIAL PRIMARY KEY,
-  "movie_id" INT REFERENCES "movies" NOT NULL,
+  "movie_id" INT REFERENCES "movies" ON DELETE CASCADE NOT NULL ,
   "genre_id" INT REFERENCES "genres" NOT NULL
 );
 
@@ -75,3 +75,15 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+
+-- Get genres when movie.id is known and return genre IDs
+SELECT movies_genres.movie_id AS movieid, name FROM movies_genres
+JOIN genres ON genres.id = movies_genres.genre_id
+WHERE movie_id = 1;
+
+-- GET all genres
+SELECT * FROM genres;
+
+-- DELETE movie
+DELETE FROM "movies" WHERE id=18;
